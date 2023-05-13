@@ -5,17 +5,17 @@ import {updateCactus, setupCactus, getCactusRects} from './cactus.js'
 
 const WORLD_WIDTH = 100
 const WORLD_HEIGHT = 30
-const SPEED_SCALE_INCREASE = .00001
+const SPEED_SCALE_INCREASE = .00001//
 
-const worldElem = document.querySelector('[data-world]')
-const scoreElem = document.querySelector('[data-score]')
-const startScreenElem = document.querySelector('[data-start-screen]')
+const worldElem = document.querySelector('[data-world]')//
+const scoreElem = document.querySelector('[data-score]')//
+const startScreenElem = document.querySelector('[data-start-screen]')//
 
 
 
 setPixelToWorldScale()
-window.addEventListener("resize", setPixelToWorldScale)
-document.addEventListener("keydown", handleStart, { once: true })
+window.addEventListener("resize", setPixelToWorldScale)//
+document.addEventListener("keydown", handleStart, { once: true })//
 
 let lastTime
 let speedScale
@@ -43,10 +43,10 @@ if (lastTime == null) {
 
 function checkLostState() {
     const dinoRect = getDinoRect()
-    return getCactusRects().some(rect => isCollision(rect, dinoRect))
+    return getCactusRects().some(rect => isCollision(rect, dinoRect))//from the video in my readme don't fully remember what this does will look at after class
 }
 
-function isCollision(rect1, rect2) {
+function isCollision(rect1, rect2) { //sets up collision for the dino and cactus
     return rect1.left < rect2.right && 
     rect1.top < rect2.bottom && 
     rect1.right > rect2.left && 
@@ -62,7 +62,7 @@ function updateScore(delta) {
     scoreElem.textContent =  Math.floor(score)
 }
 
-function handleStart() {
+function handleStart() { //when game starts this puts everything at its origin or is preping for its function
     lastTime = null
     speedScale = 1
     score = 0
@@ -76,7 +76,7 @@ function handleStart() {
 function handleLose() {
     setDinoLose()
     setTimeout(() => {
-        document.addEventListener("keydown", handleStart, {once: true})
+        document.addEventListener("keydown", handleStart, {once: true}) //when the player loses the start screen text will reappear and have a short 100ms dely between ending teh game and when you can restart the game.
         startScreenElem.classList.remove("hide")
     }, 100)
 }

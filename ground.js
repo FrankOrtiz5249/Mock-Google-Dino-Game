@@ -17,6 +17,7 @@ export function updateGround(delta, speedScale) {
         incrementCustomProperty(ground, "--left", delta * speedScale * SPEED * -1)
 
         if(getCustomProperty(ground, "--left") <= -300)
-            incrementCustomProperty(ground, "--left" , 600) //makes the ground loop after the second one finishes//
+            incrementCustomProperty(ground, "--left" , 600) 
+//makes the ground loop after the second one finishes should be seemless but sometimes @ random it breaks dont know why//
     })
 }
